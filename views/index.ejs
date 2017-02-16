@@ -1,0 +1,46 @@
+<% include partials/header%>
+
+    <div class="ui main raised segment container">
+    <h1>This is the Patient Data page</h1>
+    <div class="ui form centered">
+    	<input type="search" name="search" placeholder="Enter the patient you want to search.">
+    </div>
+    <table class="ui selectable striped celled padded table ">
+        <thead>	
+			<tr class="ui small header centered">
+				<th>Patient Name</th>
+				<th>Date of birth</th>
+				<th>Age</th>
+				<th>Blood Group</th>
+				<th>Gender</th>
+				<th>Phone Number</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% patients.forEach(function(patient){ %>
+		    <tr class="center aligned">
+				<td class="fullName"><%=patient.firstName %> <%=patient.lastName%></td>
+				<td><%=moment(patient.dob).format('dddd, MMMM Do YYYY')%></td>
+				<td><%=moment().diff(patient.dob, 'years',false);%></td>
+				<td><%=patient.blood%></td>
+				<td><%=patient.gender%></td>
+				<td><%=patient.phone%></td>
+				<td><%=patient.info%></td>
+			</tr>
+        <% });%>
+        </tbody>
+        <tfoot class="full-width">
+              <th colspan="16">
+                <a href="/patients/new">
+                	<div class="ui right floated medium primary labeled icon button">
+                  		<i class="user icon"></i> Add Patient
+                	</div>
+                </a>
+              </th>
+      </tfoot>
+    </table>
+</div>
+
+<script src="/scripts/search.js"></script>
+<% include partials/footer%>

@@ -1,0 +1,12 @@
+<%include partials/header %>
+    <div class="ui container main text segment">
+        <h1 class="ui header">Oops there are a few errors...</h1>
+        <ul>
+            <% errors.forEach(function(errorItem){ %>
+               <li><%=errorItem.msg%></li>
+            <% })%>
+        </ul>
+        <a class="ui blue button right floated" href="/patients/new">Back</a>
+        <div style="clear:both"></div>
+    </div>
+<%include partials/footer %>

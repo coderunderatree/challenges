@@ -1,0 +1,55 @@
+<% include partials/header%>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Enter Patient Data here</div>
+    <form class="ui form" action="/patients" method="POST">
+        <div class="field">
+            <label>First Name</label>
+            <input type="text" name="patient[firstName]" placeholder="First Name" max="20" required>
+        </div>
+        <div class="field">
+            <label>Last Name</label>
+            <input type="text" name="patient[lastName]" placeholder="Last Name" required>
+        </div>
+        <div class="field">
+            <label>Dob</label>
+            <input type="date" name="patient[dob]" required>
+        </div>
+        <div class="field">
+            <label>Blood Group</label>
+            <select name="patient[blood]" required>
+                <option disabled selected> -- select an option -- </option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+        </div> 
+        <div class="field">
+            <label>Gender</label>
+            <select name="patient[gender]" required>
+                <option disabled selected> -- select an option -- </option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>Phone Number</label>
+            <input type="number" name="patient[phone]" min="0" required>
+        </div>
+        
+        <div class="field">
+            <label>Information</label>
+            <textarea name="patient[info]" rows="4" placeholder="Info about the patient goes here" maxlength="250" required></textarea>
+        </div>
+        <input class="ui blue inverted button" type="submit" value="Submit">
+    </form>
+</div>
+
+<script src="/scripts/space.js"></script>
+<% include partials/footer%>
