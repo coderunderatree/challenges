@@ -29,6 +29,7 @@ var Patient = mongoose.model('Patient', patientSchema);
 app.get('/',function (req,res) {
     res.redirect('/patients');    
 });
+
 app.get('/patients',function (req,res) {
     Patient.find({},function (err,patients) {
         if(err){
@@ -46,8 +47,6 @@ app.get('/patients/new',function(req, res) {
 
 // CREATE Route
 app.post('/patients',function(req, res) {
-    //Thre req.body.patient object is returned form the form inside new.ejs file
-    
     //Check and Validate for Errors
     req.checkBody({
         'patient[firstName]':{
@@ -81,16 +80,10 @@ app.post('/patients',function(req, res) {
         },
     });
     // //Error check results
-    // req.getValidationResult().then(function(result) {
-    // // do something with the validation result 
-    //     var errors = result.useFirstErrorOnly().mapped();
-    //     console.log(errors);
-    // });
     var errors = req.validationErrors();
     
     if (errors) {
         res.render('errors',{errors:errors});
-        // res.send(errors);
         return;
     } else {
     // normal processing here
@@ -109,13 +102,3 @@ app.post('/patients',function(req, res) {
 app.listen(process.env.PORT, process.env.IP,function(){
    console.log("Server is running!"); 
 });
-
-    
-    //Thre req.body.patient object is returned form the form inside new.ejs file
-    // req.checkBody('firstName', 'First Name is required and should be a string').notEmpty().isAlpha();
-    // req.checkBody('lastName', 'Last Name is required and should be a string').notEmpty().isAlpha();
-    // req.checkBody('age', 'Age is required and should be a number').notEmpty();
-    // req.checkBody('dob', 'Date of birth must be selected').notEmpty();
-    // req.checkBody('gender', 'You must select the Gender').notEmpty();
-    // req.checkBody('phone', 'Phone number must be between 6 to 10 digits').notEmpty().isInt({min:6, max:10});
-    // req.checkBody('info', 'Name is required').notEmpty();
