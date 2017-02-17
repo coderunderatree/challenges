@@ -6,7 +6,8 @@ var express             = require('express'),
     validator           = require('express-validator');
     
 // APP Config
-mongoose.connect('mongodb://localhost/patient_data');
+// mongoose.connect('mongodb://localhost/patient_data');
+mongoose.connect('mongodb://test_user:usertest@ds155509.mlab.com:55509/challenge_dataphi');
 app.set('view engine','ejs');
 app.use(express.static("public"));//use public directory for stylesheets and other script files
 app.use(bodyParser.urlencoded({extended:true}));
